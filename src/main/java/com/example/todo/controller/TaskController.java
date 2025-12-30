@@ -1,8 +1,12 @@
 package com.example.todo.controller;
 
+<<<<<<< HEAD
 import com.example.todo.dto.TaskRequest;
 import com.example.todo.dto.TaskResponse;
 import com.example.todo.dto.TaskUpdateRequest;
+=======
+import com.example.todo.dto.*;
+>>>>>>> 4c2f6dcdf75e617e9e2f4e8fdca3bce72deaba29
 import com.example.todo.service.TaskService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -14,7 +18,11 @@ import java.util.List;
 @RequestMapping("/tasks")
 public class TaskController {
 
+<<<<<<< HEAD
     private final TaskService service;
+=======
+    private TaskService service;
+>>>>>>> 4c2f6dcdf75e617e9e2f4e8fdca3bce72deaba29
 
     public TaskController(TaskService service) {
         this.service = service;
@@ -36,6 +44,7 @@ public class TaskController {
         return service.create(request);
     }
 
+<<<<<<< HEAD
     @PutMapping("/{id}")
     public TaskResponse replace(
             @PathVariable Long id,
@@ -44,6 +53,8 @@ public class TaskController {
         return service.replace(id, request);
     }
 
+=======
+>>>>>>> 4c2f6dcdf75e617e9e2f4e8fdca3bce72deaba29
     @PatchMapping("/{id}")
     public TaskResponse update(
             @PathVariable Long id,

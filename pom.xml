@@ -5,6 +5,10 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+<<<<<<< HEAD
+=======
+    <!-- 👇 ВАЖНО -->
+>>>>>>> 4c2f6dcdf75e617e9e2f4e8fdca3bce72deaba29
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -32,6 +36,7 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+<<<<<<< HEAD
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -55,6 +60,8 @@
         </dependency>
 
 
+=======
+>>>>>>> 4c2f6dcdf75e617e9e2f4e8fdca3bce72deaba29
     </dependencies>
 
     <build>
