@@ -5,7 +5,7 @@ import com.example.todo.dto.TaskResponse;
 import com.example.todo.dto.TaskUpdateRequest;
 import com.example.todo.exception.TaskNotFoundException;
 import com.example.todo.model.Task;
-import com.example.todo.repository.InMemoryTaskRepository;
+import com.example.todo.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +14,9 @@ import java.util.stream.Collectors;
 @Service
 public class TaskService {
 
-    private final InMemoryTaskRepository repository;
+    private final TaskRepository repository;
 
-    public TaskService(InMemoryTaskRepository repository) {
+    public TaskService(TaskRepository repository) {
         this.repository = repository;
     }
 
@@ -27,9 +27,7 @@ public class TaskService {
                 request.getDescription(),
                 request.getStatus()
         );
-
-        Task savedTask = repository.save(task);
-        return toResponse(savedTask);
+        return toResponse(repository.save(task));
     }
 
     public List<TaskResponse> findAll() {
@@ -53,8 +51,7 @@ public class TaskService {
         task.setDescription(request.getDescription());
         task.setStatus(request.getStatus());
 
-        Task updatedTask = repository.update(task);
-        return toResponse(updatedTask);
+        return toResponse(repository.save(task));
     }
 
     public TaskResponse update(Long id, TaskUpdateRequest request) {
@@ -71,15 +68,14 @@ public class TaskService {
             task.setStatus(request.getStatus());
         }
 
-        Task updatedTask = repository.update(task);
-        return toResponse(updatedTask);
+        return toResponse(repository.save(task));
     }
 
     public void delete(Long id) {
-        if (repository.findById(id).isEmpty()) {
+        if (!repository.existsById(id)) {
             throw new TaskNotFoundException(id);
         }
-        repository.delete(id);
+        repository.deleteById(id);
     }
 
     private TaskResponse toResponse(Task task) {

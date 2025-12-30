@@ -1,10 +1,21 @@
 package com.example.todo.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tasks")
 public class Task {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String title;
+
     private String description;
+
+    @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
     public Task() {
@@ -49,3 +60,9 @@ public class Task {
         this.status = status;
     }
 }
+
+
+
+
+
+
