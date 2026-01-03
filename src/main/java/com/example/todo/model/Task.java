@@ -1,6 +1,5 @@
 package com.example.todo.model;
 
-<<<<<<< HEAD
 import jakarta.persistence.*;
 
 @Entity
@@ -17,13 +16,6 @@ public class Task {
     private String description;
 
     @Enumerated(EnumType.STRING)
-=======
-public class Task {
-
-    private Long id;
-    private String title;
-    private String description;
->>>>>>> 4c2f6dcdf75e617e9e2f4e8fdca3bce72deaba29
     private TaskStatus status;
 
     public Task() {
@@ -68,12 +60,9 @@ public class Task {
         this.status = status;
     }
 }
-<<<<<<< HEAD
 
 
 
 
 
 
-=======
->>>>>>> 4c2f6dcdf75e617e9e2f4e8fdca3bce72deaba29
