@@ -7,25 +7,25 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 
-    public static final String QUEUE = "task.queue";
     public static final String EXCHANGE = "task.exchange";
+    public static final String QUEUE = "task.queue";
     public static final String ROUTING_KEY = "task.event";
 
     @Bean
-    public Queue taskQueue() {
+    public DirectExchange exchange() {
+        return new DirectExchange(EXCHANGE);
+    }
+
+    @Bean
+    public Queue queue() {
         return new Queue(QUEUE, true);
     }
 
     @Bean
-    public TopicExchange exchange() {
-        return new TopicExchange(EXCHANGE);
-    }
-
-    @Bean
-    public Binding binding(Queue taskQueue, TopicExchange exchange) {
+    public Binding binding() {
         return BindingBuilder
-                .bind(taskQueue)
-                .to(exchange)
+                .bind(queue())
+                .to(exchange())
                 .with(ROUTING_KEY);
     }
 }
